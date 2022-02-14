@@ -1,5 +1,5 @@
 console.log('=========================================');
 
-import './study/riak';
+import './study/review';
 
 console.log('=========================================');
