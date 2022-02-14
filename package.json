@@ -2,6 +2,10 @@
   "name": "TypeScript_TypePuzzle",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=development",
+    "start": "webpack serve --mode=development"
+  },
   "repository": "https://github.com/OkazakiRui/TypeScript_TypePuzzle.git",
   "author": "RuiOkazaki <okazaki200226@gmail.com>",
   "license": "MIT",
