@@ -65,10 +65,10 @@ const [id, username, isAdmin] = charAttrs;
 const str = `{"id": 1, "username": "patty", "isAdmin": true}`;
 // JSON.parseは返り値がany型
 const user = JSON.parse(str);
-console.log(user.id);
+// console.log(user.id);
 // 存在しないプロパティにもアクセスできる。ぬるぽ！
+// console.log(user.hobby);
 
-console.log(user.hobby);
 const userUnknown: unknown = JSON.parse(str);
 // console.log(userUnknown.id);
 // Object is of type 'unknown'.
@@ -88,3 +88,19 @@ const greet = (friend: 'Serval' | 'Caracal' | 'Cheetah') => {
       const check: never = friend;
   }
 };
+// console.log(greet('Cheetah'));
+
+interface NumberFunc {
+  (n: number, m: number): number;
+}
+const add: NumberFunc = (n, m) => n + m;
+
+const toArray = <T>(arg1: T, arg2: T): T[] => [arg1, arg2];
+toArray(12, 12);
+toArray('12', '12');
+// toArray('12', 12);
+// Argument of type 'number' is not assignable to parameter of type 'string'.
+
+const toArrayVariably = <T>(...args: T[]): T[] => [...args];
+toArrayVariably(1, 2, 3, 4, 5);
+// toArrayVariably('1', 2, 3, 4, 5);
