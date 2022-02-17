@@ -127,3 +127,7 @@ const rolley: User = {
 };
 
 type Some = number & string;
+
+const arr = [1, 2];
+type NumArr = typeof arr;
+const val: NumArr = [1, 3, 1, 32, 4];
