@@ -104,3 +104,26 @@ toArray('12', '12');
 const toArrayVariably = <T>(...args: T[]): T[] => [...args];
 toArrayVariably(1, 2, 3, 4, 5);
 // toArrayVariably('1', 2, 3, 4, 5);
+
+type Unit = 'USD' | 'EUR' | 'JPY' | 'GBP';
+type TCurrency = {
+  unit: Unit;
+  amount: number;
+};
+
+interface User {
+  name: string;
+}
+interface User {
+  age: number;
+}
+interface User {
+  species: 'rabbit' | 'bear' | 'fox' | 'dog';
+}
+const rolley: User = {
+  age: 20,
+  name: 'keigo',
+  species: 'rabbit',
+};
+
+type Some = number & string;
