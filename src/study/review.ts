@@ -131,3 +131,37 @@ type Some = number & string;
 const arr = [1, 2];
 type NumArr = typeof arr;
 const val: NumArr = [1, 3, 1, 32, 4];
+
+const obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+};
+console.log('a' in obj);
+// objにaというプロパティがある → true
+for (const key in obj) {
+  console.log(key);
+}
+
+type Fig = 'one' | 'two' | 'three';
+// ユニオン型の値を展開し、値をkeyにする型を作成している
+type FigMap = {
+  [key in Fig]?: number;
+};
+const figMap: FigMap = {
+  one: 12,
+  two: 12,
+  three: 12,
+};
+// figMap.four = 12;
+// error TS2339: Property 'four' does not exist on type 'FigMap'.
+
+const permissions = {
+  r: 0b100 as const,
+  w: 0b010 as const,
+  x: 0b001 as const,
+};
+type PermsChar = keyof typeof permissions;
+// "r" | "w" | "x"
+type PermsNum = typeof permissions[PermsChar];
+// 1 | 2 | 4
