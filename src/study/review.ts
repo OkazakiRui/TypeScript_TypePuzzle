@@ -165,3 +165,33 @@ type PermsChar = keyof typeof permissions;
 // "r" | "w" | "x"
 type PermsNum = typeof permissions[PermsChar];
 // 1 | 2 | 4
+
+const override = <T, U extends T>(obj1: T, obj2: U): T & U => ({
+  ...obj1,
+  ...obj2,
+});
+override({ a: 1 }, { a: 24, b: 8 });
+// override({ a: 1 }, { ax: 24, b: 8 });
+// error TS2345: Argument of type '{ ax: number; b: number; }' is not assignable to parameter of type '{ a: number; }'.
+// Object literal may only specify known properties, and 'ax' does not exist in type '{ a: number; }'.
+
+{
+  type User = { id: unknown };
+  type NewUesr = User & { id: string };
+  type OldUesr = User & { id: number };
+  type Book = { isbn: string };
+
+  type IsString<T> = T extends string ? true : false;
+  type A = IsString<'a'>;
+  // type A = true
+  type B = IsString<1>;
+  // type B = false
+  type C = IsString<boolean>;
+  // type C = false
+
+  type IdOf<T> = T extends User ? T['id'] : never;
+
+  type NewUesrId = IdOf<NewUesr>;
+  type OldUesrId = IdOf<OldUesr>;
+  type BookIdUesrId = IdOf<Book>;
+}
